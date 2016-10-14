@@ -1,0 +1,35 @@
+{
+  "name": "node-custom-form-cta-type-aweber",
+  "version": "1.0.0",
+  "description": "A sample custom form CTA type for Uberflip that integrates Uberflip CTAs with the AWeber email marketing platform.",
+  "author": "Uberflip",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uberflip/node-custom-form-cta-type-aweber.git"
+  },
+  "private": true,
+  "analyze": true,
+  "main": "index.js",
+  "scripts": {
+    "watch-start": "nodemon -x npm start",
+    "start": "node index.js",
+    "watch-test": "nodemon -x npm test",
+    "test": "standard && echint && mdspell -r -n --en-us '**/*.md' '!**/node_modules/**/*.md'"
+  },
+  "dependencies": {
+    "aweber-api-nodejs": "0.0.2",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  },
+  "config": {
+    "accountId": "YOUR.AWEBER.ACCOUNT.ID.HERE",
+    "listId": "YOUR.AWEBER.LIST.ID.HERE"
+  },
+  "devDependencies": {
+    "echint": "^1.5.3",
+    "markdown-spellcheck": "^0.10.0",
+    "nodemon": "^1.9.1",
+    "standard": "^6.0.8"
+  }
+}
