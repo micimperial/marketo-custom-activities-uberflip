@@ -13,21 +13,21 @@ var urlId = ""; //Get from cookie
 // Connection URL
 var dbUrl = 'mongodb://admin:admin@ds061278.mlab.com:61278/aweber';
 //Check DB for defaults
-MongoClient.connect(dbUrl, function (err, db) {
-	assert.equal(null, err);
-	db.collection("tokens").findOne({}, function (err, res) {
-		assert.equal(null, err);
-		if (res != null) {
-			apiToken = res.apiToken;
-			apiTokenSecret = res.apiTokenSecret;
-		}
-		console.log(apiTokenSecret)
-		db.close();
-	});
-});
+//MongoClient.connect(dbUrl, function (err, db) {
+//	assert.equal(null, err);
+//	db.collection("tokens").findOne({}, function (err, res) {
+//		assert.equal(null, err);
+//		if (res != null) {
+//			apiToken = res.apiToken;
+//			apiTokenSecret = res.apiTokenSecret;
+//		}
+//		console.log(apiTokenSecret)
+//		db.close();
+//	});
+//});
 //Get Fields
 app.post('/get-fields', function (req, res) {
-	console.dir(req);
+//	console.dir(req);
 	var fields = [
 			{
 				'display_name': 'Email Address'
@@ -60,7 +60,7 @@ app.post('/get-fields', function (req, res) {
 });
 //Submit
 app.post('/submit', function (req, res) {
-	console.dir(req);
+//	console.dir(req);
 	res.status(200)
 	res.end()
 });
