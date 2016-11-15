@@ -1,16 +1,16 @@
 var express = require('express')
-var bodyParser = require('body-parser')
-var url = require('url')
-var pkg = require('./package')
-var MongoClient = require('mongodb').MongoClient, assert = require('assert');
+// var bodyParser = require('body-parser')
+// var url = require('url')
+// var pkg = require('./package')
+// var MongoClient = require('mongodb').MongoClient, assert = require('assert');
 var app = express()
 	// Default Variables
 var clientId = "";
 var clientSecret = "";
 var token = "";
-var urlId = ""; //Get from cookie
+var urlId = "";
 // Connection URL
-var dbUrl = 'mongodb://admin:admin@ds061278.mlab.com:61278/aweber';
+// var dbUrl = 'mongodb://admin:admin@ds061278.mlab.com:61278/aweber';
 //Check DB for defaults
 //MongoClient.connect(dbUrl, function (err, db) {
 //	assert.equal(null, err);
