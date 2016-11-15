@@ -2,8 +2,7 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var url = require('url')
 var pkg = require('./package')
-var MongoClient = require('mongodb').MongoClient
-var assert = require('assert');
+var MongoClient = require('mongodb').MongoClient, assert = require('assert');
 var app = express()
 	// Default Variables
 var clientId = "";
