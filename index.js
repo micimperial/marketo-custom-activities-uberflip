@@ -1,9 +1,10 @@
-//var express = require('express')
-// var bodyParser = require('body-parser')
-// var url = require('url')
-// var pkg = require('./package')
-// var MongoClient = require('mongodb').MongoClient, assert = require('assert');
-//var app = express()
+var express = require('express')
+var bodyParser = require('body-parser')
+var url = require('url')
+var pkg = require('./package')
+var NodeAweber = require('aweber-api-nodejs')
+var MongoClient = require('mongodb').MongoClient
+	, assert = require('assert');
 	// Default Variables
 //var clientId = "";
 //var clientSecret = "";
