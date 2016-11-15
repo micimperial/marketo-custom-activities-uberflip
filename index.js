@@ -52,7 +52,7 @@ app.post('/get-fields', function (req, res) {
 				, 'active': true
 				, 'locked': false
       }
-    ];
+    ]
 	res.json(fields)
 	res.status(200)
 	res.end()
