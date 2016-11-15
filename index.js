@@ -28,9 +28,7 @@ app.use(bodyParser.json())
 app.get('/', function (req, res) {
 	res.send(pkg.name + ' listening on ' + port)
 })
-app.listen(port, function () {
-	console.log(pkg.name + ' listening on port ' + port)
-})
+
 app.post('/get-fields', function (req, res) {
 	var fields = [
 		{
@@ -72,4 +70,7 @@ app.post('/get-fields', function (req, res) {
 	}
 	res.status(500)
 	res.end()
+})
+app.listen(port, function () {
+	console.log(pkg.name + ' listening on port ' + port)
 })
