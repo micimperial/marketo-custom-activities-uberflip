@@ -27,6 +27,8 @@ MongoClient.connect(dbUrl, function (err, db) {
 //Get Fields
 app.post('/get-fields', function (req, res) {
 	console.dir(req);
+	var fields={};
+	res.json(fields)
 	res.status(200)
 	res.end()
 });
