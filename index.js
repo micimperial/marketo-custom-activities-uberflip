@@ -5,6 +5,7 @@ var pkg = require('./package');
 var MongoClient = require('mongodb').MongoClient
 	, assert = require('assert');
 var url = 'mongodb://admin:admin@ds061278.mlab.com:61278/aweber';
+var port = process.env.PORT;
 // Defaults
 var app = express();
 var apiId;
