@@ -58,8 +58,8 @@ app.post('/get-fields', function (req, res) {
 	res.end()
 });
 //Submit
-app.post('/submit', function (req, res) {
+//app.post('/submit', function (req, res) {
 //	console.dir(req);
-	res.status(200)
+//	res.status(200)
 	res.end()
-});
+//});
