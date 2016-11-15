@@ -1,14 +1,14 @@
-var express = require('express')
+//var express = require('express')
 // var bodyParser = require('body-parser')
 // var url = require('url')
 // var pkg = require('./package')
 // var MongoClient = require('mongodb').MongoClient, assert = require('assert');
-var app = express()
+//var app = express()
 	// Default Variables
-var clientId = "";
-var clientSecret = "";
-var token = "";
-var urlId = "";
+//var clientId = "";
+//var clientSecret = "";
+//var token = "";
+//var urlId = "";
 // Connection URL
 // var dbUrl = 'mongodb://admin:admin@ds061278.mlab.com:61278/aweber';
 //Check DB for defaults
@@ -25,7 +25,7 @@ var urlId = "";
 //	});
 //});
 //Get Fields
-app.post('/get-fields', function (req, res) {
+// app.post('/get-fields', function (req, res) {
 //	console.dir(req);
 //	var fields = [
 //			{
@@ -56,7 +56,7 @@ app.post('/get-fields', function (req, res) {
 //	res.json(fields)
 //	res.status(200)
 //	res.end()
-});
+// });
 //Submit
 //app.post('/submit', function (req, res) {
 //	console.dir(req);
