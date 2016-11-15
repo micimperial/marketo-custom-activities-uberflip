@@ -1,8 +1,8 @@
 {
   "name": "node-custom-form-cta-type-aweber",
   "version": "1.0.0",
-  "description": "A sample custom form CTA type for Uberflip that integrates Uberflip CTAs with the AWeber email marketing platform.",
-  "author": "Uberflip",
+  "description": "A sample custom form CTA type for Uberflip that integrates Uberflip CTAs with Marketo Custom Activities",
+  "author": "Michael Imperial @ Uberflip",
   "license": "MIT",
   "repository": {
     "type": "git",
