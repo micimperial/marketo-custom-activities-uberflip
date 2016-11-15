@@ -27,7 +27,33 @@ MongoClient.connect(dbUrl, function (err, db) {
 //Get Fields
 app.post('/get-fields', function (req, res) {
 	console.dir(req);
-	var fields={};
+	var fields =
+		var fields = [
+			{
+				'display_name': 'Email Address'
+				, 'html_name': 'email_address'
+				, 'control_type': 'text'
+				, 'required': true
+				, 'active': true
+				, 'locked': true
+      }
+			, {
+				'display_name': 'First Name'
+				, 'html_name': 'first_name'
+				, 'control_type': 'text'
+				, 'required': false
+				, 'active': true
+				, 'locked': false
+      }
+			, {
+				'display_name': 'Last Name'
+				, 'html_name': 'last_name'
+				, 'control_type': 'text'
+				, 'required': false
+				, 'active': true
+				, 'locked': false
+      }
+    ];
 	res.json(fields)
 	res.status(200)
 	res.end()
