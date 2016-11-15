@@ -27,8 +27,7 @@ MongoClient.connect(dbUrl, function (err, db) {
 //Get Fields
 app.post('/get-fields', function (req, res) {
 	console.dir(req);
-	var fields =
-		var fields = [
+	var fields = [
 			{
 				'display_name': 'Email Address'
 				, 'html_name': 'email_address'
