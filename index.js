@@ -57,7 +57,7 @@ app.post('/get-fields', function (req, res) {
 			, 'locked': false
       }
     ]
-	console.dir(req)
+	console.dir(req.body)
 	res.json(fields)
 	res.status(200)
 	res.end()
