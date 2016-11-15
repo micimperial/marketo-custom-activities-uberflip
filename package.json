@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/uberflip/node-custom-form-cta-type-aweber.git"
+    "url": "https://github.com/micimperial/marketo-custom-activities-uberflip.git"
   },
   "private": true,
   "analyze": true,
@@ -18,13 +18,10 @@
     "test": "standard && echint && mdspell -r -n --en-us '**/*.md' '!**/node_modules/**/*.md'"
   },
   "dependencies": {
-    "aweber-api-nodejs": "0.0.2",
     "body-parser": "^1.15.0",
     "express": "^4.13.4"
   },
   "config": {
-    "accountId": "YOUR.AWEBER.ACCOUNT.ID.HERE",
-    "listId": "YOUR.AWEBER.LIST.ID.HERE"
   },
   "devDependencies": {
     "echint": "^1.5.3",
