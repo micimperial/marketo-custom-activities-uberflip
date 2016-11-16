@@ -57,7 +57,6 @@ app.all('/get-fields', function (req, res) {
 	loadUser(req);
 	var fields = [];
 	marketo.lead.describe().then(function (data) {
-
 		var results = data.result;
 		results.forEach(function (data) {
 			var field = {
@@ -71,10 +70,11 @@ app.all('/get-fields', function (req, res) {
 			console.dir(field);
 			fields.push(field)
 		})
-	})
-	res.json(fields)
+			res.json(fields)
 	res.status(200)
 	res.end()
+	})
+
 }, function error(error) {
 	if (error.error) {
 		res.json({
