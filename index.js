@@ -96,9 +96,9 @@ app.post('/get-fields', function (req, res) {
 	}
 })
 app.post('/submit', function (req, res) {
-	console.dir(req.cookie)
-	console.dir('---------------------------')
-	console.dir(req.body)
+	console.dir(req.cookies);
+	console.log('---------------------------');
+	console.dir(req.body);
 	loadUser(req, res);
 	marketo.lead.createOrUpdate('id', [53560]).then(function (data, res) {
 		console.dir(data)
