@@ -100,7 +100,7 @@ app.post('/get-fields', function (req, res) {
 	}
 })
 app.post('/submit', function (req, res) {
-	loadUser(req, res, getLeadId);
+	loadUser(req, res);
 });
 app.listen(port, function () {
 	console.log(pkg.name + ' listening on port ' + port)
