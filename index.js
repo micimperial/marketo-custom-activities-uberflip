@@ -57,7 +57,7 @@ app.all('/get-fields', function (req, res) {
 	loadUser(req);
 	var fields = [];
 	marketo.lead.describe().then(function (data) {
-		console.dir(data.moreResult);
+		console.dir(data.result);
 		data.result.forEach(function (data) {
 			var field = {
 				'display_name': data.displayName
