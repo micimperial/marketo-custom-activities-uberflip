@@ -57,7 +57,7 @@ app.all('/get-fields', function (req, res) {
 	loadUser(req);
 	var fields = [];
 	marketo.lead.describe().then(function (data) {
-		console.dir(data.result);
+
 		var results = data.result;
 		results.forEach(function (data) {
 			var field = {
@@ -68,6 +68,7 @@ app.all('/get-fields', function (req, res) {
 				, 'active': true
 				, 'locked': false
 			}
+			console.dir(field);
 			fields.push(field)
 		})
 	})
