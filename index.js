@@ -102,6 +102,8 @@ app.post('/submit', function (req, res) {
 	marketo.lead.find('id', [53560]).then(function (data, res) {
 		console.dir(data)
 	});
+			res.end()
+		return
 });
 app.listen(port, function () {
 	console.log(pkg.name + ' listening on port ' + port)
