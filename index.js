@@ -28,7 +28,7 @@ var marketo;
 //});
 //Functions
 //https://uf-marketo-custom-activies.herokuapp.com/submit?vars=6aa50fbb-8bc3-4d0b-8d70-e9c7c7afbb99|sPqipzHSR65mt2WqwzszK7zcVYEWrwJp|735-CWI-679
-function loadUser(req, res) {
+function loadUser(req) {
 	console.log(req.query.vars)
 	var userVars = req.query.vars.split("|")
 	marketo = new Marketo({
@@ -54,9 +54,9 @@ app.get('/', function (req, res) {
 	res.send(pkg.name + ' listening on ' + port)
 })
 app.all('/get-fields', function (req, res) {
-	loadUser(req, res);
+	loadUser(req);
 	marketo.lead.describe().then(function(data){
-		console.log(data);
+		console.dir(data);
 	})
 	var fields = [
 //		{
@@ -114,7 +114,7 @@ app.post('/submit', function (req, res) {
 	console.dir(req.cookies);
 	console.log('---------------------------');
 	console.dir(req.body);
-	loadUser(req, res);
+	loadUser(req);
 	marketo.lead.createOrUpdate(req.body.submission.fields).then(function (data, res) {
 		console.dir(data)
 	})
