@@ -29,13 +29,13 @@ var marketo;
 //Functions
 //https://uf-marketo-custom-activies.herokuapp.com/submit?vars=6aa50fbb-8bc3-4d0b-8d70-e9c7c7afbb99|sPqipzHSR65mt2WqwzszK7zcVYEWrwJp|735-CWI-679
 function loadUser(req, res) {
-	console.log (req.query.vars)
+	console.log(req.query.vars)
 	var userVars = req.query.vars.split("|")
 	marketo = new Marketo({
-		 clientId: userVars[0]
+		clientId: userVars[0]
 		, clientSecret: userVars[1]
-		, endpoint:'https://'+ userVars[2] + '.mktorest.com//rest'
-		, identity:'https://'+ userVars[2] + '.mktorest.com//identity'
+		, endpoint: 'https://' + userVars[2] + '.mktorest.com//rest'
+		, identity: 'https://' + userVars[2] + '.mktorest.com//identity'
 	});
 }
 
@@ -47,8 +47,6 @@ function getToken() {}
 
 function getFields() {}
 
-
-
 function postCA() {}
 //Routes
 app.use(bodyParser.json())
@@ -56,6 +54,7 @@ app.get('/', function (req, res) {
 	res.send(pkg.name + ' listening on ' + port)
 })
 app.post('/get-fields', function (req, res) {
+	loadUser(req, res);
 	var fields = [
 		{
 			'display_name': 'Email Address'
@@ -97,14 +96,18 @@ app.post('/get-fields', function (req, res) {
 	}
 })
 app.post('/submit', function (req, res) {
+	console.dir(req.cookie)
+	console.dir('---------------------------')
+	console.dir(req.body)
 	loadUser(req, res);
-
-	marketo.lead.find('id', [53560]).then(function (data, res) {
+	marketo.lead.createOrUpdate('id', [53560]).then(function (data, res) {
 		console.dir(data)
+	}).then(function(){
+		//Custom Activity
+	})
+	res.end()
+	return
 	});
-			res.end()
-		return
-});
 app.listen(port, function () {
 	console.log(pkg.name + ' listening on port ' + port)
 })
