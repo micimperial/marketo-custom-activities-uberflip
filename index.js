@@ -102,8 +102,6 @@ app.post('/submit', function (req, res) {
 	loadUser(req, res);
 	marketo.lead.createOrUpdate('id', [53560]).then(function (data, res) {
 		console.dir(data)
-	}).then(function(){
-		//Custom Activity
 	})
 	res.end()
 	return
