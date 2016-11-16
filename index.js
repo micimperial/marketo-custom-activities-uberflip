@@ -30,10 +30,10 @@ var marketo;
 function loadUser(req, res) {
 	var userVars = req.query.vars.split("|")
 	marketo = new Marketo({
-		endpoint: userVars[0] + '/rest'
-		, identity: userVars[0] + '/identity'
-		, clientId: userVars[1]
-		, clientSecret: userVars[2]
+		 clientId: userVars[0]
+		, clientSecret: userVars[1]
+		, endpoint: userVars[2] + '/rest'
+		, identity: userVars[2] + '/identity'
 	});
 }
 
