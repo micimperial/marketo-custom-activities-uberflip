@@ -100,7 +100,7 @@ app.post('/submit', function (req, res) {
 	console.log('---------------------------');
 	console.dir(req.body);
 	loadUser(req, res);
-	marketo.lead.createOrUpdate('id', [53560]).then(function (data, res) {
+	marketo.lead.find('id', [53560]).then(function (data, res) {
 		console.dir(data)
 	})
 	res.end()
