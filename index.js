@@ -3,8 +3,7 @@ var bodyParser = require('body-parser');
 var url = require('url');
 var pkg = require('./package');
 var Marketo = require('node-marketo-rest');
-//var MongoClient = require('mongodb').MongoClient, assert = require('assert');
-//var url = 'mongodb://admin:admin@ds061278.mlab.com:61278/aweber';
+var cookie = require('cookie');
 var port = process.env.PORT;
 var app = express();
 // Vars from POST
@@ -13,21 +12,8 @@ var identity;
 var clientId;
 var clientSecret;
 var marketo;
-//Check DB
-//MongoClient.connect(url, function (err, db) {
-//	assert.equal(null, err);
-//	db.collection("tokens").findOne({}, function (err, res) {
-//		assert.equal(null, err);
-//		if (res != null) {
-//			apiToken = res.apiToken;
-//			apiTokenSecret = res.apiTokenSecret;
-//		}
-//		console.log(apiTokenSecret)
-//		db.close();
-//	});
-//});
-//Functions
-//https://uf-marketo-custom-activies.herokuapp.com/submit?vars=6aa50fbb-8bc3-4d0b-8d70-e9c7c7afbb99|sPqipzHSR65mt2WqwzszK7zcVYEWrwJp|735-CWI-679
+var customActivity;
+
 function loadUser(req) {
 	console.log(req.query.vars)
 	var userVars = req.query.vars.split("|")
@@ -86,9 +72,7 @@ app.all('/get-fields', function (req, res) {
 	}
 })
 app.post('/submit', function (req, res) {
-	console.dir(req.cookies);
-	console.log('---------------------------');
-	console.dir(req.body);
+	console.log('COOKIE: 'req.cookies);
 	loadUser(req);
 	marketo.lead.createOrUpdate(req.body.submission.fields).then(function (data, res) {
 		console.dir(data)
