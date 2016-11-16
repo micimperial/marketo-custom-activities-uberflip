@@ -34,8 +34,8 @@ function loadUser(req, res) {
 	marketo = new Marketo({
 		 clientId: userVars[0]
 		, clientSecret: userVars[1]
-		, endpoint:'https://'+ userVars[2] + '/rest'
-		, identity:'https://'+ userVars[2] + '/identity'
+		, endpoint:'https://'+ userVars[2] + '.mktorest.com//rest'
+		, identity:'https://'+ userVars[2] + '.mktorest.com//identity'
 	});
 }
 
@@ -98,10 +98,10 @@ app.post('/get-fields', function (req, res) {
 })
 app.post('/submit', function (req, res) {
 	loadUser(req, res);
-	console.log(marketo);
-//	marketo.lead.find('id', [53560]).then(function (data, res) {
-//		console.dir(data)
-//	});
+
+	marketo.lead.find('id', [53560]).then(function (data, res) {
+		console.dir(data)
+	});
 });
 app.listen(port, function () {
 	console.log(pkg.name + ' listening on port ' + port)
