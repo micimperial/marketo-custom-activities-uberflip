@@ -64,7 +64,7 @@ app.all('/get-fields', function (req, res) {
 				, 'html_name': data.rest.name
 				, 'control_type': 'text'
 				, 'required': false
-				, 'active': true
+				, 'active': false
 				, 'locked': false
 			}
 			console.dir(field);
