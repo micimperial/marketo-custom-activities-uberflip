@@ -55,48 +55,21 @@ app.get('/', function (req, res) {
 })
 app.all('/get-fields', function (req, res) {
 	loadUser(req);
-	marketo.lead.describe().then(function(data){
+	var fields = [];
+	marketo.lead.describe().then(function (data) {
 		console.dir(data);
+		data.entries.forEach(function (customField) {
+			var field = {
+				'display_name': data.displayName
+				, 'html_name': data.rest.name
+				, 'control_type': 'text'
+				, 'required': false
+				, 'active': true
+				, 'locked': false
+			}
+			fields.push(field)
+		})
 	})
-	var fields = [
-//		{
-//			'display_name': 'Email Address'
-//			, 'html_name': 'email_address'
-//			, 'control_type': 'text'
-//			, 'required': true
-//			, 'active': true
-//			, 'locked': true
-//      }
-//			, {
-//			'display_name': 'First Name'
-//			, 'html_name': 'first_name'
-//			, 'control_type': 'text'
-//			, 'required': false
-//			, 'active': true
-//			, 'locked': false
-//      }
-//			, {
-//			'display_name': 'Last Name'
-//			, 'html_name': 'last_name'
-//			, 'control_type': 'text'
-//			, 'required': false
-//			, 'active': true
-//			, 'locked': false
-//      }
-    ]
-//	console.dir(req.body)
-
-//	res.entries.forEach(function (customField) {
-//			var field = {
-//				'display_name': customField.name
-//				, 'html_name': customField.name
-//				, 'control_type': 'text'
-//				, 'required': false
-//				, 'active': true
-//				, 'locked': false
-//			}
-//			fields.push(field)
-//	})
 	res.json(fields)
 	res.status(200)
 	res.end()
@@ -120,7 +93,7 @@ app.post('/submit', function (req, res) {
 	})
 	res.end()
 	return
-	});
+});
 app.listen(port, function () {
 	console.log(pkg.name + ' listening on port ' + port)
 })
