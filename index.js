@@ -27,7 +27,7 @@ var marketo;
 //	});
 //});
 //Functions
-function loadUser(req, res, next) {
+function loadUser(req, res) {
 	var userVars = req.query.vars.split("|")
 	marketo = new Marketo({
 		endpoint: userVars[0] + '/rest'
@@ -35,7 +35,7 @@ function loadUser(req, res, next) {
 		, clientId: userVars[1]
 		, clientSecret: userVars[2]
 	});
-	next();
+	console.dir(marketo);
 }
 
 function saveUser() {}
