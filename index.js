@@ -65,7 +65,7 @@ app.all('/get-fields', function (req, res) {
 })
 app.post('/submit', function (req, res) {
 	loadUser(req);
-	marketo.lead.createOrUpdate(req.body.submission.fields).then(function (data, res) {
+	marketo.lead.createOrUpdate([req.body.submission.fields]).then(function (data, res) {
 		console.dir(res);
 		marketo.activity();
 		var now = moment();
