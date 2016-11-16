@@ -22,7 +22,8 @@
     "express": "^4.13.4",
     "moment": "^2.16.0",
     "mongodb": "^2.2.11",
-    "node-marketo-rest": "^0.3.3"
+    "node-marketo-rest": "^0.3.3",
+    "request": "^2.78.0"
   },
   "config": {},
   "devDependencies": {

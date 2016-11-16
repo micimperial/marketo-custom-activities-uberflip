@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var url = require('url');
 var pkg = require('./package');
+var request = require('request');
 var moment = require("moment")
 var Marketo = require('node-marketo-rest');
 var port = process.env.PORT;
@@ -16,7 +17,7 @@ var customActivity;
 var primaryAttributeValue;
 
 function loadUser(req) {
-	console.log(req.query.vars)
+	//console.log(req.query.vars)
 	var userVars = req.query.vars.split("|")
 	marketo = new Marketo({
 		clientId: userVars[0]
@@ -25,8 +26,8 @@ function loadUser(req) {
 		, identity: 'https://' + userVars[2] + '.mktorest.com//identity'
 	});
 	customActivity = userVars[3];
+	console.log(marketo.getOAuthToken);
 }
-
 //Routes
 app.use(bodyParser.json())
 app.get('/', function (req, res) {
@@ -67,7 +68,6 @@ app.post('/submit', function (req, res) {
 	loadUser(req);
 	marketo.lead.createOrUpdate([req.body.submission.fields]).then(function (data, res) {
 		console.dir(res);
-		marketo.activity();
 		var now = moment();
 		var activity = {
 			"input": [
@@ -75,10 +75,16 @@ app.post('/submit', function (req, res) {
 					"leadId": result[0].id
 					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
 					, "activityTypeId": customActivity || null
-					, "primaryAttributeValue":  req.body.submission.fields.primaryAttributeValue || null
+					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
       			}
   			]
 		}
+
+//		request('http://www.google.com', function (error, response, body) {
+//			if (!error && response.statusCode == 200) {
+//				console.log(body) // Show the HTML for the Google homepage.
+//			}
+//		})
 	})
 	res.end()
 	return
