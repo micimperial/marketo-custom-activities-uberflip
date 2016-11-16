@@ -45,11 +45,7 @@ function getToken() {}
 
 function getFields() {}
 
-function getLeadId() {
-	marketo.lead.find('id', [53560]).then(function (data, res) {
-		console.dir(data)
-	});
-}
+
 
 function postCA() {}
 //Routes
