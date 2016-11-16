@@ -1,32 +1,33 @@
 {
-	"name": "uf-marketo-custom-activies"
-	, "version": "1.0.0"
-	, "description": "A sample custom form CTA type for Uberflip that integrates Uberflip CTAs with Marketo Custom Activities"
-	, "author": "Michael Imperial @ Uberflip"
-	, "license": "MIT"
-	, "repository": {
-		"type": "git"
-		, "url": "https://github.com/micimperial/marketo-custom-activities-uberflip.git"
-	}
-	, "private": true
-	, "analyze": true
-	, "main": "index.js"
-	, "scripts": {
-		"watch-start": "nodemon -x npm start"
-		, "start": "node index.js"
-		, "watch-test": "nodemon -x npm test"
-		, "test": "standard && echint && mdspell -r -n --en-us '**/*.md' '!**/node_modules/**/*.md'"
-	}
-	, "dependencies": {
-		"body-parser": "^1.15.0"
-		, "express": "^4.13.4"
-		, "mongodb": "^2.2.11"
-	}
-	, "config": {}
-	, "devDependencies": {
-		"echint": "^1.5.3"
-		, "markdown-spellcheck": "^0.10.0"
-		, "nodemon": "^1.9.1"
-		, "standard": "^6.0.8"
-	}
+  "name": "uf-marketo-custom-activies",
+  "version": "1.0.0",
+  "description": "A sample custom form CTA type for Uberflip that integrates Uberflip CTAs with Marketo Custom Activities",
+  "author": "Michael Imperial @ Uberflip",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/micimperial/marketo-custom-activities-uberflip.git"
+  },
+  "private": true,
+  "analyze": true,
+  "main": "index.js",
+  "scripts": {
+    "watch-start": "nodemon -x npm start",
+    "start": "node index.js",
+    "watch-test": "nodemon -x npm test",
+    "test": "standard && echint && mdspell -r -n --en-us '**/*.md' '!**/node_modules/**/*.md'"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "mongodb": "^2.2.11",
+    "node-marketo-rest": "^0.3.3"
+  },
+  "config": {},
+  "devDependencies": {
+    "echint": "^1.5.3",
+    "markdown-spellcheck": "^0.10.0",
+    "nodemon": "^1.9.1",
+    "standard": "^6.0.8"
+  }
 }

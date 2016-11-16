@@ -2,16 +2,17 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var url = require('url');
 var pkg = require('./package');
-var MongoClient = require('mongodb').MongoClient
-	, assert = require('assert');
-var url = 'mongodb://admin:admin@ds061278.mlab.com:61278/aweber';
+var Marketo = require('node-marketo-rest');
+//var MongoClient = require('mongodb').MongoClient, assert = require('assert');
+//var url = 'mongodb://admin:admin@ds061278.mlab.com:61278/aweber';
 var port = process.env.PORT;
-// Defaults
 var app = express();
-var apiId;
-var apiToken;
-var apiSecret;
-var apiUrl;
+// Vars from POST
+var endpoint;
+var identity;
+var clientId;
+var clientSecret;
+var marketo;
 //Check DB
 //MongoClient.connect(url, function (err, db) {
 //	assert.equal(null, err);
@@ -25,11 +26,38 @@ var apiUrl;
 //		db.close();
 //	});
 //});
+//Functions
+function loadUser(req, res, next) {
+	var userVars = req.query.vars.split("|")
+	marketo = new Marketo({
+		endpoint: userVars[0] + '/rest'
+		, identity: userVars[0] + '/identity'
+		, clientId: userVars[1]
+		, clientSecret: userVars[2]
+	});
+	next();
+}
+
+function saveUser() {}
+
+function setUser() {}
+
+function getToken() {}
+
+function getFields() {}
+
+function getLeadId() {
+	marketo.lead.find('id', [53560]).then(function (data, res) {
+		console.dir(data)
+	});
+}
+
+function postCA() {}
+//Routes
 app.use(bodyParser.json())
 app.get('/', function (req, res) {
 	res.send(pkg.name + ' listening on ' + port)
 })
-
 app.post('/get-fields', function (req, res) {
 	var fields = [
 		{
@@ -61,7 +89,7 @@ app.post('/get-fields', function (req, res) {
 	res.json(fields)
 	res.status(200)
 	res.end()
-}, function (error) {
+}, function error(error) {
 	if (error.error) {
 		res.json({
 			'errors': [{
@@ -70,9 +98,10 @@ app.post('/get-fields', function (req, res) {
 				}]
 		})
 	}
-	res.status(500)
-	res.end()
 })
+app.post('/submit', function (req, res) {
+	loadUser(req, res, getLeadId);
+});
 app.listen(port, function () {
 	console.log(pkg.name + ' listening on port ' + port)
 })
