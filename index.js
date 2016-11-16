@@ -72,7 +72,7 @@ app.all('/get-fields', function (req, res) {
 	}
 })
 app.post('/submit', function (req, res) {
-	console.log('COOKIE: 'req.cookies);
+	console.log('COOKIE: '+req.cookies);
 	loadUser(req);
 	marketo.lead.createOrUpdate(req.body.submission.fields).then(function (data, res) {
 		console.dir(data)
