@@ -98,9 +98,10 @@ app.post('/get-fields', function (req, res) {
 })
 app.post('/submit', function (req, res) {
 	loadUser(req, res);
-	marketo.lead.find('id', [53560]).then(function (data, res) {
-		console.dir(data)
-	});
+	console.log(marketo);
+//	marketo.lead.find('id', [53560]).then(function (data, res) {
+//		console.dir(data)
+//	});
 });
 app.listen(port, function () {
 	console.log(pkg.name + ' listening on port ' + port)
