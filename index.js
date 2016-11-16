@@ -2,8 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var url = require('url');
 var pkg = require('./package');
+var moment = require("moment")
 var Marketo = require('node-marketo-rest');
-var cookie = require('cookie');
 var port = process.env.PORT;
 var app = express();
 // Vars from POST
@@ -13,6 +13,7 @@ var clientId;
 var clientSecret;
 var marketo;
 var customActivity;
+var primaryAttributeValue;
 
 function loadUser(req) {
 	console.log(req.query.vars)
@@ -23,17 +24,9 @@ function loadUser(req) {
 		, endpoint: 'https://' + userVars[2] + '.mktorest.com//rest'
 		, identity: 'https://' + userVars[2] + '.mktorest.com//identity'
 	});
+	customActivity = userVars[3];
 }
 
-function saveUser() {}
-
-function setUser() {}
-
-function getToken() {}
-
-function getFields() {}
-
-function postCA() {}
 //Routes
 app.use(bodyParser.json())
 app.get('/', function (req, res) {
@@ -56,11 +49,10 @@ app.all('/get-fields', function (req, res) {
 			console.dir(field);
 			fields.push(field)
 		})
-			res.json(fields)
-	res.status(200)
-	res.end()
+		res.json(fields)
+		res.status(200)
+		res.end()
 	})
-
 }, function error(error) {
 	if (error.error) {
 		res.json({
@@ -72,10 +64,21 @@ app.all('/get-fields', function (req, res) {
 	}
 })
 app.post('/submit', function (req, res) {
-	console.log('COOKIE: '+req.cookies);
 	loadUser(req);
 	marketo.lead.createOrUpdate(req.body.submission.fields).then(function (data, res) {
-		console.dir(data)
+		console.dir(res);
+		marketo.activity();
+		var now = moment();
+		var activity = {
+			"input": [
+				{
+					"leadId": result[0].id
+					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
+					, "activityTypeId": customActivity || null
+					, "primaryAttributeValue":  req.body.submission.fields.primaryAttributeValue || null
+      			}
+  			]
+		}
 	})
 	res.end()
 	return
