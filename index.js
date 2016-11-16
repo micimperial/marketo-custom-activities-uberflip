@@ -61,8 +61,8 @@ app.all('/get-fields', function (req, res) {
 		var results = data.result;
 		results.forEach(function (data) {
 			var field = {
-				'display_name': results.displayName
-				, 'html_name': results.rest.name
+				'display_name': data.displayName
+				, 'html_name': data.rest.name
 				, 'control_type': 'text'
 				, 'required': false
 				, 'active': true
