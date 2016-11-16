@@ -53,7 +53,7 @@ app.use(bodyParser.json())
 app.get('/', function (req, res) {
 	res.send(pkg.name + ' listening on ' + port)
 })
-app.post('/get-fields', function (req, res) {
+app.all('/get-fields', function (req, res) {
 	loadUser(req, res);
 	marketo.lead.describe().then(function(data){
 		console.log(data);
