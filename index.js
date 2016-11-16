@@ -27,7 +27,9 @@ var marketo;
 //	});
 //});
 //Functions
+//https://uf-marketo-custom-activies.herokuapp.com/submit?vars=6aa50fbb-8bc3-4d0b-8d70-e9c7c7afbb99|sPqipzHSR65mt2WqwzszK7zcVYEWrwJp|735-CWI-679
 function loadUser(req, res) {
+	console.log (req.query.vars)
 	var userVars = req.query.vars.split("|")
 	marketo = new Marketo({
 		 clientId: userVars[0]
