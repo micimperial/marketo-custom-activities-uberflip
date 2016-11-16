@@ -32,8 +32,8 @@ function loadUser(req, res) {
 	marketo = new Marketo({
 		 clientId: userVars[0]
 		, clientSecret: userVars[1]
-		, endpoint: userVars[2] + '/rest'
-		, identity: userVars[2] + '/identity'
+		, endpoint:'https://'+ userVars[2] + '/rest'
+		, identity:'https://'+ userVars[2] + '/identity'
 	});
 }
 
