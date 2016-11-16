@@ -55,33 +55,48 @@ app.get('/', function (req, res) {
 })
 app.post('/get-fields', function (req, res) {
 	loadUser(req, res);
+	marketo.lead.describe().then(function(data){
+		console.log(data);
+	})
 	var fields = [
-		{
-			'display_name': 'Email Address'
-			, 'html_name': 'email_address'
-			, 'control_type': 'text'
-			, 'required': true
-			, 'active': true
-			, 'locked': true
-      }
-			, {
-			'display_name': 'First Name'
-			, 'html_name': 'first_name'
-			, 'control_type': 'text'
-			, 'required': false
-			, 'active': true
-			, 'locked': false
-      }
-			, {
-			'display_name': 'Last Name'
-			, 'html_name': 'last_name'
-			, 'control_type': 'text'
-			, 'required': false
-			, 'active': true
-			, 'locked': false
-      }
+//		{
+//			'display_name': 'Email Address'
+//			, 'html_name': 'email_address'
+//			, 'control_type': 'text'
+//			, 'required': true
+//			, 'active': true
+//			, 'locked': true
+//      }
+//			, {
+//			'display_name': 'First Name'
+//			, 'html_name': 'first_name'
+//			, 'control_type': 'text'
+//			, 'required': false
+//			, 'active': true
+//			, 'locked': false
+//      }
+//			, {
+//			'display_name': 'Last Name'
+//			, 'html_name': 'last_name'
+//			, 'control_type': 'text'
+//			, 'required': false
+//			, 'active': true
+//			, 'locked': false
+//      }
     ]
-	console.dir(req.body)
+//	console.dir(req.body)
+
+//	res.entries.forEach(function (customField) {
+//			var field = {
+//				'display_name': customField.name
+//				, 'html_name': customField.name
+//				, 'control_type': 'text'
+//				, 'required': false
+//				, 'active': true
+//				, 'locked': false
+//			}
+//			fields.push(field)
+//	})
 	res.json(fields)
 	res.status(200)
 	res.end()
@@ -100,7 +115,7 @@ app.post('/submit', function (req, res) {
 	console.log('---------------------------');
 	console.dir(req.body);
 	loadUser(req, res);
-	marketo.lead.find('id', [53560]).then(function (data, res) {
+	marketo.lead.createOrUpdate(req.body.submission.fields).then(function (data, res) {
 		console.dir(data)
 	})
 	res.end()
