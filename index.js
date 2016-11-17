@@ -106,18 +106,19 @@ app.post('/submit', function (req, res) {
 						}]
 					}
 				};
-				request({
-					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/' + listId + '/leads.json?access_token=' + token
-					, method: "POST"
-					, json: leadJson
-				}, function addToListCallback(error, res, body) {
-					if (!error && res.statusCode == 200) {
-						console.log(body)
-					}
-					else {
-						console.log(error)
-					}
-				})
+				marketo.list.addLeadsToList(listId, [leadId])
+//				request({
+//					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/' + listId + '/leads.json?access_token=' + token
+//					, method: "POST"
+//					, json: leadJson
+//				}, function addToListCallback(error, res, body) {
+//					if (!error && res.statusCode == 200) {
+//						console.log(body)
+//					}
+//					else {
+//						console.log(error)
+//					}
+//				})
 			}
 			else {
 				console.log(error)
