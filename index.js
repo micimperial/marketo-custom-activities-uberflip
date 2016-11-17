@@ -71,7 +71,7 @@ app.post('/submit', function (req, res) {
 		var activity = {
 			"input": [
 				{
-					"leadId": res.result[0].id || 0
+					"leadId": data.result[0].id || 0
 					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
 					, "activityTypeId": customActivity || null
 					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
