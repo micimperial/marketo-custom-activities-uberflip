@@ -99,7 +99,6 @@ app.post('/submit', function (req, res) {
 				console.log(body) // Show the HTML for the Google homepage.
 			}
 			console.dir(error)
-			console.dir(res)
 		})
 	})
 	res.end()
