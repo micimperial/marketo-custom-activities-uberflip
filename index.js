@@ -22,8 +22,8 @@ function loadUser(req) {
 	marketo = new Marketo({
 		clientId: userVars[0]
 		, clientSecret: userVars[1]
-		, endpoint: 'https://' + userVars[2] + '.mktorest.com//rest'
-		, identity: 'https://' + userVars[2] + '.mktorest.com//identity'
+		, endpoint: 'https://' + userVars[2] + '.mktorest.com/rest'
+		, identity: 'https://' + userVars[2] + '.mktorest.com/identity'
 	});
 	customActivity = userVars[3];
 	console.log(marketo);
