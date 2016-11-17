@@ -82,7 +82,7 @@ app.post('/submit', function (req, res) {
 			"input": [
 				{
 					"leadId": data.result[0].id || 0
-					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
+					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssZ")
 					, "activityTypeId": customActivity || null
 					, "primaryAttributeValue": primaryAttributeValue || ""
       			}
