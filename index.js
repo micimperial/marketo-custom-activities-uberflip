@@ -26,7 +26,6 @@ function loadUser(req) {
 		, identity: 'https://' + userVars[2] + '.mktorest.com/identity'
 	});
 	customActivity = userVars[3];
-	console.log(marketo);
 }
 //Routes
 app.use(bodyParser.json())
@@ -69,6 +68,7 @@ app.post('/submit', function (req, res) {
 	var lead = req.body.submission.fields
 	console.log(lead);
 	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
+		console.log(marketo.Connection._tokenData);
 		console.log(res);
 		var now = moment();
 		var activity = {
