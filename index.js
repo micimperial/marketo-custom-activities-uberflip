@@ -73,8 +73,8 @@ app.post('/submit', function (req, res) {
 	console.log(lead);
 	console.log(parseInt(listId));
 	marketo.list.addLeadsToList(parseInt(listId),[lead]).then(function (data, res) {
-		console.log('res: '+res);
-		console.log(JSON.stringify(data));
+//		console.log('res: '+res);
+//		console.log(JSON.stringify(data));
 //		var token = marketo._connection._tokenData.access_token
 //		var now = moment();
 //		var activity = {
