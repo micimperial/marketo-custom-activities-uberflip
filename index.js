@@ -75,24 +75,24 @@ app.post('/submit', function (req, res) {
 	marketo.list.addLeadsToList(parseInt(listId),[lead]).then(function (data, res) {
 		console.log('res: '+res);
 		console.log(JSON.stringify(data));
-		var token = marketo._connection._tokenData.access_token
-		var now = moment();
-		var activity = {
-			"input": [
-				{
-					"leadId": data.result[0].id || 0
-					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
-					, "activityTypeId": customActivity || null
-					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
-      			}
-  			]
-		}
-
-		request('https://' + userVars[2] + '/rest/v1/activities/external.json?access_token='+token, function (error, response, body) {
-			if (!error && response.statusCode == 200) {
-				console.log(body) // Show the HTML for the Google homepage.
-			}
-		})
+//		var token = marketo._connection._tokenData.access_token
+//		var now = moment();
+//		var activity = {
+//			"input": [
+//				{
+//					"leadId": data.result[0].id || 0
+//					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
+//					, "activityTypeId": customActivity || null
+//					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
+//      			}
+//  			]
+//		}
+//
+//		request('https://' + userVars[2] + '/rest/v1/activities/external.json?access_token='+token, function (error, response, body) {
+//			if (!error && response.statusCode == 200) {
+//				console.log(body) // Show the HTML for the Google homepage.
+//			}
+//		})
 	})
 	res.end()
 	return
