@@ -96,11 +96,14 @@ app.post('/submit', function (req, res) {
 			, json: activity
 		}, function customActivityCallback(error, res, body) {
 			if (!error && res.statusCode == 200) {
-				console.log(body) // Show the HTML for the Google homepage.
+				console.log(body)
+				leadJson = {
+					id: [leadId]
+				};
 				request({
-					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/'+listId+'/leads.json?access_token=' + token
+					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/' + listId + '/leads.json?access_token=' + token
 					, method: "POST"
-					, json: [leadId]
+					, json: leadJson
 				}, function addToListCallback(error, res, body) {
 					if (!error && res.statusCode == 200) {
 						console.log(body)
