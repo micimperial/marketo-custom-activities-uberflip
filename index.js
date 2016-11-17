@@ -74,14 +74,14 @@ app.post('/submit', function (req, res) {
 	//	marketo.list.addLeadsToList().then(function (data, res) {
 	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
 		console.log(JSON.stringify(data));
-		console.log(data.result[0].id)
 		var token = marketo._connection._tokenData.access_token
 		var now = moment();
 		var activity = {
 			"input": [
 				{
 					"leadId": data.result[0].id || 0
-					//, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
+					2013-09-26T06:56:35+07:03
+					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
 					, "activityTypeId": customActivity || null
 					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
       			}
