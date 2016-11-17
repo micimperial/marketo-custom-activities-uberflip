@@ -83,7 +83,7 @@ app.post('/submit', function (req, res) {
 					"leadId": data.result[0].id || 0
 					, "activityDate": "2013-09-26T06:56:35+07:03"
 					, "activityTypeId": customActivity || null
-					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
+					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || ""
       			}
   			]
 		}
