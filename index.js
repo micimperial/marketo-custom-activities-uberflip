@@ -69,9 +69,8 @@ app.all('/get-fields', function (req, res) {
 app.post('/submit', function (req, res) {
 	loadUser(req);
 	var lead = req.body.submission.fields;
-	console.log('sup');
 
-	delete lead['primaryAttributeValue'];
+//	delete lead['primaryAttributeValue'];
 
 //	lead.id = 0;
 	console.log(lead);
