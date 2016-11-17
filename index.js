@@ -100,6 +100,11 @@ app.post('/submit', function (req, res) {
 				leadJson = {
 					list: listId
 					, id: [leadId]
+					, listOperationRequest: {
+						"input": [{
+							"id": leadId
+						}]
+					}
 				};
 				request({
 					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/' + listId + '/leads.json?access_token=' + token
