@@ -71,10 +71,12 @@ app.post('/submit', function (req, res) {
 	var lead = req.body.submission.fields;
 	delete lead['primaryAttributeValue'];
 	console.log(lead);
-	console.log(parseInt(listId));
-	marketo.list.addLeadsToList().then(function (data, res) {
-		console.log('res: '+res);
-		console.log(JSON.stringify(data));
+//	console.log(parseInt(listId));
+//	https://github.com/MadKudu/node-marketo/issues/33
+//	marketo.list.addLeadsToList().then(function (data, res) {
+	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
+//		console.log('res: '+res);
+//		console.log(JSON.stringify(data));
 //		var token = marketo._connection._tokenData.access_token
 //		var now = moment();
 //		var activity = {
