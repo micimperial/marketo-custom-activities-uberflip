@@ -70,8 +70,6 @@ app.post('/submit', function (req, res) {
 	loadUser(req);
 	var lead = req.body.submission.fields;
 	delete lead['primaryAttributeValue'];
-	console.log(lead);
-	//	console.log(parseInt(listId));
 	//	https://github.com/MadKudu/node-marketo/issues/33
 	//	marketo.list.addLeadsToList().then(function (data, res) {
 	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
@@ -83,7 +81,7 @@ app.post('/submit', function (req, res) {
 			"input": [
 				{
 					"leadId": data.result[0].id || 0
-					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
+					//, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
 					, "activityTypeId": customActivity || null
 					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
       			}
