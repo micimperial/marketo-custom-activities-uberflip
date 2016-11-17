@@ -69,6 +69,7 @@ app.all('/get-fields', function (req, res) {
 app.post('/submit', function (req, res) {
 	loadUser(req);
 	var lead = req.body.submission.fields;
+	primaryAttributeValue = req.body.submission.fields.primaryAttributeValue;
 	delete lead['primaryAttributeValue'];
 	//	https://github.com/MadKudu/node-marketo/issues/33
 	//	marketo.list.addLeadsToList().then(function (data, res) {
@@ -83,7 +84,7 @@ app.post('/submit', function (req, res) {
 					"leadId": data.result[0].id || 0
 					, "activityDate": "2013-09-26T06:56:35+07:03"
 					, "activityTypeId": customActivity || null
-					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || ""
+					, "primaryAttributeValue": primaryAttributeValue || ""
       			}
   			]
 		}
@@ -96,7 +97,7 @@ app.post('/submit', function (req, res) {
 			if (!error && res.statusCode == 200) {
 				console.log(body) // Show the HTML for the Google homepage.
 			}
-			console.dir(error)
+			console.log(error)
 		})
 	})
 	res.end()
