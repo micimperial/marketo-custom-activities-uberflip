@@ -6,7 +6,7 @@ Middleware to enable [Marketo's custom activities](http://docs.marketo.com/displ
 You'll need to have the following information readily available
 
 Variable | Details
-- | -
+---- | ----
 CLIENTID | Read this article to learn how to find your Client ID: https://learn.uberflip.com/marketo/setting-up-your-marketo-integration
 CLIENTSECRET | Read this article to learn how to find your Client Secret: https://learn.uberflip.com/marketo/setting-up-your-marketo-integration
 CLIENTSUBDOMAIN | Read this article to learn how to find your Client Subdomain: https://learn.uberflip.com/marketo/setting-up-your-marketo-integration
