@@ -67,12 +67,11 @@ app.all('/get-fields', function (req, res) {
 app.post('/submit', function (req, res) {
 	loadUser(req);
 	marketo.lead.createOrUpdate([req.body.submission.fields]).then(function (data, res) {
-		console.dir(res);
 		var now = moment();
 		var activity = {
 			"input": [
 				{
-					"leadId": result[0].id
+					"leadId": res.result[0].id || 0
 					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
 					, "activityTypeId": customActivity || null
 					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
