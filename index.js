@@ -78,13 +78,12 @@ app.post('/submit', function (req, res) {
 		var token = marketo._connection._tokenData.access_token
 		var now = moment();
 		var leadId = data.result[0].id;
-		//now.format("YYYY-MM-DDThh:mm:ssTZD")
 		var activity = {
 			"input": [
 				{
 					"leadId": data.result[0].id || 0
 					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssZ")
-					, "activityTypeId": customActivity || null
+					, "activityTypeId": customActivity || ""
 					, "primaryAttributeValue": primaryAttributeValue || ""
       			}
   			]
@@ -97,6 +96,7 @@ app.post('/submit', function (req, res) {
 		}, function customActivityCallback(error, res, body) {
 			if (!error && res.statusCode == 200) {
 				console.log(body)
+				console.log(leadId)
 				leadJson = {
 					list: listId
 					, id: [leadId]
