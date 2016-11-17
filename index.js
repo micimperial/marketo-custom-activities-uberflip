@@ -71,9 +71,9 @@ app.post('/submit', function (req, res) {
 	var lead = req.body.submission.fields;
 	delete lead['primaryAttributeValue'];
 	console.log(lead);
-//	console.log(parseInt(listId));
-//	https://github.com/MadKudu/node-marketo/issues/33
-//	marketo.list.addLeadsToList().then(function (data, res) {
+	//	console.log(parseInt(listId));
+	//	https://github.com/MadKudu/node-marketo/issues/33
+	//	marketo.list.addLeadsToList().then(function (data, res) {
 	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
 		console.log(JSON.stringify(data));
 		console.log(data.result[0].id)
@@ -89,9 +89,13 @@ app.post('/submit', function (req, res) {
       			}
   			]
 		}
-
-		request.post('https://' + userVars[2] + '.mktorest.com/rest/v1/activities/external.json?access_token='+token, function (error, res, body) {
-			if (!error && response.statusCode == 200) {
+		console.dir(activity);
+		request({
+			url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/activities/external.json?access_token=' + token
+			, method: "POST"
+			, json: activity
+		}, function (error, res, body) {
+			if (!error && res.statusCode == 200) {
 				console.log(body) // Show the HTML for the Google homepage.
 			}
 			console.dir(error)
