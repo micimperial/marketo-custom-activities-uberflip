@@ -72,7 +72,7 @@ app.post('/submit', function (req, res) {
 	delete lead['primaryAttributeValue'];
 	console.log(lead);
 	console.log(parseInt(listId));
-	marketo.list.addLeadsToList(1018,[]).then(function (data, res) {
+	marketo.list.addLeadsToList().then(function (data, res) {
 		console.log('res: '+res);
 		console.log(JSON.stringify(data));
 //		var token = marketo._connection._tokenData.access_token
