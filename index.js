@@ -66,6 +66,8 @@ app.all('/get-fields', function (req, res) {
 app.post('/submit', function (req, res) {
 	loadUser(req);
 	var lead = req.body.submission.fields
+	delete lead['primaryAttributeValue'];
+
 //	lead.id = 0;
 	console.log(lead);
 	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
