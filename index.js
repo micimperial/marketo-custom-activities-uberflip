@@ -66,7 +66,7 @@ app.all('/get-fields', function (req, res) {
 app.post('/submit', function (req, res) {
 	loadUser(req);
 	var lead = req.body.submission.fields
-	lead.id = 0;
+//	lead.id = 0;
 	console.log(lead);
 	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
 		console.log('res: '+res);
