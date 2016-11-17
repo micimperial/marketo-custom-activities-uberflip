@@ -81,7 +81,7 @@ app.post('/submit', function (req, res) {
 				{
 					"leadId": data.result[0].id || 0
 					2013-09-26T06:56:35+07:03
-					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
+					, "activityDate": "2013-09-26T06:56:35+07:03"//now.format("YYYY-MM-DDThh:mm:ssTZD")
 					, "activityTypeId": customActivity || null
 					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
       			}
