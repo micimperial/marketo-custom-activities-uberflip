@@ -15,10 +15,11 @@ var clientSecret;
 var marketo;
 var customActivity;
 var primaryAttributeValue;
+var userVars;
 
 function loadUser(req) {
 	//console.log(req.query.vars)
-	var userVars = req.query.vars.split("|")
+	userVars = req.query.vars.split("|")
 	marketo = new Marketo({
 		clientId: userVars[0]
 		, clientSecret: userVars[1]
@@ -75,22 +76,22 @@ app.post('/submit', function (req, res) {
 		console.dir(JSON.stringify(data));
 		var token = marketo._connection._tokenData.access_token
 		var now = moment();
-//		var activity = {
-//			"input": [
-//				{
-//					"leadId": data.result[0].id || 0
-//					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
-//					, "activityTypeId": customActivity || null
-//					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
-//      			}
-//  			]
-//		}
+		var activity = {
+			"input": [
+				{
+					"leadId": data.result[0].id || 0
+					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssTZD")
+					, "activityTypeId": customActivity || null
+					, "primaryAttributeValue": req.body.submission.fields.primaryAttributeValue || null
+      			}
+  			]
+		}
 
-//		request('http://www.google.com', function (error, response, body) {
-//			if (!error && response.statusCode == 200) {
-//				console.log(body) // Show the HTML for the Google homepage.
-//			}
-//		})
+		request('https://' + userVars[2] + '/rest/v1/activities/external.json?access_token='+token, function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				console.log(body) // Show the HTML for the Google homepage.
+			}
+		})
 	})
 	res.end()
 	return
