@@ -97,7 +97,7 @@ app.post('/submit', function (req, res) {
 			if (!error && res.statusCode == 200) {
 				console.log(body) // Show the HTML for the Google homepage.
 				request({
-					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/'+listId+'/external.json?access_token=' + token
+					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/'+listId+'/leads.json?access_token=' + token
 					, method: "POST"
 					, json: lead
 				}, function addToListCallback(error, res, body) {
