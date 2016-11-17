@@ -90,10 +90,11 @@ app.post('/submit', function (req, res) {
   			]
 		}
 
-		request('https://' + userVars[2] + '/rest/v1/activities/external.json?access_token='+token, function (error, response, body) {
+		request('https://' + userVars[2] + '/rest/v1/activities/external.json?access_token='+token, function (error, res, body) {
 			if (!error && response.statusCode == 200) {
 				console.log(body) // Show the HTML for the Google homepage.
 			}
+			console.dir(res)
 		})
 	})
 	res.end()
