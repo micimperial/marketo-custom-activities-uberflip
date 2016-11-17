@@ -9,7 +9,7 @@ Variable | Details
 ---- | ----
 CLIENTID | Read this article to learn how to find your Client ID: https://learn.uberflip.com/marketo/setting-up-your-marketo-integration
 CLIENTSECRET | Read this article to learn how to find your Client Secret: https://learn.uberflip.com/marketo/setting-up-your-marketo-integration
-CLIENTSUBDOMAIN | <div>You will only need to use the subdomain part of your REST API endpoint URL (e.g.: ~~~https://~~~123-ABC-456~~~.mktorest.com/rest~~~ </div>Read this article to learn how to find your Client Subdomain: https://learn.uberflip.com/marketo/setting-up-your-marketo-integration
+CLIENTSUBDOMAIN | <div>You will only need to use the subdomain part of your REST API endpoint URL (e.g.: ~~https://~~ **123-ABC-456** ~~.mktorest.com/rest~~) </div><div>&nbsp;</div>Read this article to learn how to find your Client Subdomain: https://learn.uberflip.com/marketo/setting-up-your-marketo-integration
 LISTID | Read this article to learn how to find your List ID: http://tosbourn.com/marketo-api-list-id/
 CUSTOMACTIVITYID | This can be found in your Marketo backend under: <div>Admin > Database Management > Marketo Custom Activities</div>
 
