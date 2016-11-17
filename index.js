@@ -19,7 +19,7 @@ var primaryAttributeValue;
 var userVars;
 
 function loadUser(req) {
-	//console.log(req.query.vars)
+	console.log(req.query.vars)
 	userVars = req.query.vars.split("|")
 	marketo = new Marketo({
 		clientId: userVars[0]
@@ -29,6 +29,7 @@ function loadUser(req) {
 	});
 	listId = userVars[3];
 	customActivity = userVars[4];
+
 }
 //Routes
 app.use(bodyParser.json())
@@ -107,18 +108,6 @@ app.post('/submit', function (req, res) {
 					}
 				};
 				marketo.list.addLeadsToList(listId, [leadId])
-//				request({
-//					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/' + listId + '/leads.json?access_token=' + token
-//					, method: "POST"
-//					, json: leadJson
-//				}, function addToListCallback(error, res, body) {
-//					if (!error && res.statusCode == 200) {
-//						console.log(body)
-//					}
-//					else {
-//						console.log(error)
-//					}
-//				})
 			}
 			else {
 				console.log(error)
