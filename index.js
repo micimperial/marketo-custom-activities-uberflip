@@ -90,7 +90,7 @@ app.post('/submit', function (req, res) {
   			]
 		}
 
-		request.post('https://' + userVars[2] + '/rest/v1/activities/external.json?access_token='+token, function (error, res, body) {
+		request.post('https://' + userVars[2] + '.mktorest.com/rest/v1/activities/external.json?access_token='+token, function (error, res, body) {
 			if (!error && response.statusCode == 200) {
 				console.log(body) // Show the HTML for the Google homepage.
 			}
