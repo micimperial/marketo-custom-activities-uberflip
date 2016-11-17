@@ -93,11 +93,25 @@ app.post('/submit', function (req, res) {
 			url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/activities/external.json?access_token=' + token
 			, method: "POST"
 			, json: activity
-		}, function (error, res, body) {
+		}, function customActivity(error, res, body) {
 			if (!error && res.statusCode == 200) {
 				console.log(body) // Show the HTML for the Google homepage.
+				request({
+					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/activities/external.json?access_token=' + token
+					, method: "POST"
+					, json: activity
+				}, function addToList(error, res, body) {
+					if (!error && res.statusCode == 200) {
+						console.log(body)
+					}
+					else {
+						console.log(error)
+					}
+				})
 			}
-			console.log(error)
+			else {
+				console.log(error)
+			}
 		})
 	})
 	res.end()
