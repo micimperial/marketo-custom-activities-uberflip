@@ -98,7 +98,8 @@ app.post('/submit', function (req, res) {
 			if (!error && res.statusCode == 200) {
 				console.log(body)
 				leadJson = {
-					id: [leadId]
+					list: listId
+					, id: [leadId]
 				};
 				request({
 					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/' + listId + '/leads.json?access_token=' + token
