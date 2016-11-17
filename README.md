@@ -1,8 +1,59 @@
 # Marketo Custom Activities For Uberflip 
 Middleware to enable [Marketo's custom activities](http://docs.marketo.com/display/public/DOCS/Understanding+Custom+Activities) with [Uberflip's Custom Form CTA types](https://platform.uberflip.com/form_cta_types/intro/overview.html)
 
+## Getting Started
+### Sign up for a Heroku account
 
-## Before you Begin
+[Sign up for a Heroku account.](https://signup.heroku.com/)
+
+> Heroku is a cloud Platform-as-a-Service (PaaS) popular with the open-source community. Heroku has a [free plan](https://www.heroku.com/pricing) that you can sign up for without a credit card and use to host small apps (limited to a single virtual server per app, running 18 hours/day, and sleeping after 30 minutes of inactivity).   
+
+### Get the sample
+
+Clone the sample from git:
+
+```bash
+git clone https://github.com/uberflip/node-custom-form-cta-type-aweber.git
+cd node-custom-form-cta-type-aweber/
+```
+
+Install the dependencies:
+```bash
+npm install
+```
+
+(Recommended) Run the tests:
+```bash
+npm test
+```
+### Deploy the sample to Heroku
+
+Log into Heroku:
+```bash
+heroku login
+```
+
+Create an app for the sample:
+```bash
+heroku create
+```
+> See [Creating Apps from the CLI](https://devcenter.heroku.com/articles/creating-apps) for more details on creating apps.
+
+
+Deploy the app to Heroku:
+```bash
+git push heroku master
+```
+
+If you need to restart the sample, use `heroku restart`:
+
+```bash
+heroku restart
+```
+
+## Uberflip Integration 
+
+### Before you Begin
 You'll need to have the following information readily available from your Marketo account.
 
 Variable | Details
@@ -13,7 +64,6 @@ Variable | Details
 `LISTID` | Read this article to learn how to find your List ID: <div>http://tosbourn.com/marketo-api-list-id/</div>
 `CUSTOMACTIVITYID` | This can be found in your Marketo backend under: <div>Admin > Database Management > Marketo Custom Activities</div>
 
-## Uberflip Integration 
 ### Setting Up A Custom Form CTA Type
 1. Go to [Account Settings](https://app.uberflip.com/account/details) in the Uberflip backend
 1. Select **Custom Integrations** in the side menu under **Integration**
@@ -34,3 +84,9 @@ Variable | Details
 
 ###Custom Activity Primary Field
 If you would like to set the value to your Custom Activity's Primary Field upon CTA submission, add a Hidden Form Field to your CTA named **primaryAttributeValue** with the value of your choosing.
+
+## License
+
+Copyright (c) 2016 [Uberflip](http://www.uberflip.com/).
+
+Released under the [MIT License](LICENSE).
