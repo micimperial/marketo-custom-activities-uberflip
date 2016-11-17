@@ -75,8 +75,8 @@ app.post('/submit', function (req, res) {
 //	https://github.com/MadKudu/node-marketo/issues/33
 //	marketo.list.addLeadsToList().then(function (data, res) {
 	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
-		console.log('res: '+res);
 		console.log(JSON.stringify(data));
+		console.log(data.result[0].id)
 		var token = marketo._connection._tokenData.access_token
 		var now = moment();
 		var activity = {
@@ -90,7 +90,7 @@ app.post('/submit', function (req, res) {
   			]
 		}
 
-		request('https://' + userVars[2] + '/rest/v1/activities/external.json?access_token='+token, function (error, res, body) {
+		request.post('https://' + userVars[2] + '/rest/v1/activities/external.json?access_token='+token, function (error, res, body) {
 			if (!error && response.statusCode == 200) {
 				console.log(body) // Show the HTML for the Google homepage.
 			}
