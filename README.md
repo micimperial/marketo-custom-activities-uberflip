@@ -1,7 +1,7 @@
 # Marketo Custom Activities For Uberflip 
 Middleware to enable [Marketo's custom activities](http://docs.marketo.com/display/public/DOCS/Understanding+Custom+Activities) with [Uberflip's Custom Form CTA types](https://platform.uberflip.com/form_cta_types/intro/overview.html)
 
-## Getting Started
+## Creating The Middleware App
 ### Sign up for a Heroku account
 
 [Sign up for a Heroku account.](https://signup.heroku.com/)
@@ -13,7 +13,7 @@ Middleware to enable [Marketo's custom activities](http://docs.marketo.com/displ
 Clone the sample from git:
 
 ```bash
-git clone https://github.com/uberflip/node-custom-form-cta-type-aweber.git
+git clone https://github.com/micimperial/marketo-custom-activities-uberflip
 cd node-custom-form-cta-type-aweber/
 ```
 
@@ -22,10 +22,6 @@ Install the dependencies:
 npm install
 ```
 
-(Recommended) Run the tests:
-```bash
-npm test
-```
 ### Deploy the sample to Heroku
 
 Log into Heroku:
