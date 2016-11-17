@@ -12,6 +12,7 @@ var endpoint;
 var identity;
 var clientId;
 var clientSecret;
+var listId;
 var marketo;
 var customActivity;
 var primaryAttributeValue;
@@ -26,7 +27,8 @@ function loadUser(req) {
 		, endpoint: 'https://' + userVars[2] + '.mktorest.com/rest'
 		, identity: 'https://' + userVars[2] + '.mktorest.com/identity'
 	});
-	customActivity = userVars[3];
+	listId =userVars[3];
+	customActivity = userVars[4];
 }
 //Routes
 app.use(bodyParser.json())
@@ -71,7 +73,7 @@ app.post('/submit', function (req, res) {
 
 //	lead.id = 0;
 	console.log(lead);
-	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
+	marketo.list.addLeadsToList(listId,[lead]).then(function (data, res) {
 		console.log('res: '+res);
 		console.dir(JSON.stringify(data));
 		var token = marketo._connection._tokenData.access_token
