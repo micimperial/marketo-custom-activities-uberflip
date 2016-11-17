@@ -69,14 +69,11 @@ app.all('/get-fields', function (req, res) {
 app.post('/submit', function (req, res) {
 	loadUser(req);
 	var lead = req.body.submission.fields;
-
-//	delete lead['primaryAttributeValue'];
-
-//	lead.id = 0;
+	delete lead['primaryAttributeValue'];
 	console.log(lead);
 	marketo.list.addLeadsToList(listId,[lead]).then(function (data, res) {
 		console.log('res: '+res);
-		console.dir(JSON.stringify(data));
+//		console.dir(JSON.stringify(data));
 		var token = marketo._connection._tokenData.access_token
 		var now = moment();
 		var activity = {
