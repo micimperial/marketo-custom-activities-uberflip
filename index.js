@@ -71,7 +71,7 @@ app.post('/submit', function (req, res) {
 	var lead = req.body.submission.fields;
 	delete lead['primaryAttributeValue'];
 	console.log(lead);
-	console.log(listId);
+	console.log(parseInt(listId));
 	marketo.list.addLeadsToList(parseInt(listId),[lead]).then(function (data, res) {
 		console.log('res: '+res);
 		console.dir(JSON.stringify(data));
