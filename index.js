@@ -26,7 +26,7 @@ function loadUser(req) {
 		, identity: 'https://' + userVars[2] + '.mktorest.com//identity'
 	});
 	customActivity = userVars[3];
-	console.log(marketo.getOAuthToken);
+	console.log(marketo);
 }
 //Routes
 app.use(bodyParser.json())
