@@ -77,6 +77,7 @@ app.post('/submit', function (req, res) {
 		console.log(JSON.stringify(data));
 		var token = marketo._connection._tokenData.access_token
 		var now = moment();
+		var leadId = data.result[0].id;
 		//now.format("YYYY-MM-DDThh:mm:ssTZD")
 		var activity = {
 			"input": [
@@ -99,7 +100,7 @@ app.post('/submit', function (req, res) {
 				request({
 					url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/lists/'+listId+'/leads.json?access_token=' + token
 					, method: "POST"
-					, json: lead
+					, json: [leadId]
 				}, function addToListCallback(error, res, body) {
 					if (!error && res.statusCode == 200) {
 						console.log(body)
