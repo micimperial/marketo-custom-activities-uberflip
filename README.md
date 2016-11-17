@@ -14,7 +14,7 @@ Clone the sample from git:
 
 ```bash
 git clone https://github.com/micimperial/marketo-custom-activities-uberflip
-cd node-custom-form-cta-type-aweber/
+cd marketo-custom-activities-uberflip/
 ```
 
 Install the dependencies:
@@ -47,7 +47,7 @@ If you need to restart the sample, use `heroku restart`:
 heroku restart
 ```
 
-## Uberflip Integration 
+## Uberflip Integration Setup
 
 ### Before you Begin
 You'll need to have the following information readily available from your Marketo account.
@@ -66,8 +66,8 @@ Variable | Details
 1. **Add a new Form CTA integration** and enter the details below, replacing the `UPPERCASE` words with your info:
 
  *  **Name:**  <div>Enter a name that describes your list and custom activity</div>
- *  **On Submit:**  <div>`https://uf-marketo-custom-activies.herokuapp.com/submit?vars=CLIENTID|CLIENTSECRET|CLIENTSUBDOMAIN|LISTID|CUSTOMACTIVITYID`</div>
- *  **On Get Fields:**  <div>`https://uf-marketo-custom-activies.herokuapp.com/get-fields?vars=CLIENTID|CLIENTSECRET|CLIENTSUBDOMAIN|LISTID|CUSTOMACTIVITYID`</div>
+ *  **On Submit:**  <div>`https://YOURHEROKUAPPNAME.herokuapp.com/submit?vars=CLIENTID|CLIENTSECRET|CLIENTSUBDOMAIN|LISTID|CUSTOMACTIVITYID`</div>
+ *  **On Get Fields:**  <div>`https://YOURHEROKUAPPNAME.herokuapp.com/get-fields?vars=CLIENTID|CLIENTSECRET|CLIENTSUBDOMAIN|LISTID|CUSTOMACTIVITYID`</div>
 
 1. **Save settings**
 
