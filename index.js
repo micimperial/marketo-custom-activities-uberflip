@@ -70,7 +70,7 @@ app.post('/submit', function (req, res) {
 	console.log(lead);
 	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
 		console.log('res: '+res);
-		console.log('data: '+data);
+		console.dir(data);
 		var token = marketo._connection._tokenData.access_token
 		var now = moment();
 		var activity = {
