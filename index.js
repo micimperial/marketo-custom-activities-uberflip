@@ -86,10 +86,8 @@ app.post('/submit', function (req, res) {
 					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssZ")
 					, "activityTypeId": customActivity || ""
 					, "primaryAttributeValue": primaryAttributeValue || ""
-					, "uf_conversion_item_id": ""
-					, "uf_conversion_item_title": ""
-					, "uf_conversion_test": ""
-					, "uf_last_visited_item_id": ""
+					, "uf_conversion_item_id": req.body.cta_id || ""
+					, "uf_conversion_item_title": req.body.submission.url || ""
       			}
   			]
 		}
