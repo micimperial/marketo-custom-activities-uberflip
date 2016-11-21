@@ -29,7 +29,6 @@ function loadUser(req) {
 	});
 	listId = userVars[3];
 	customActivity = userVars[4];
-
 }
 //Routes
 app.use(bodyParser.json())
@@ -68,6 +67,7 @@ app.all('/get-fields', function (req, res) {
 	}
 })
 app.post('/submit', function (req, res) {
+	console.log(req);
 	loadUser(req);
 	var lead = req.body.submission.fields;
 	primaryAttributeValue = req.body.submission.fields.primaryAttributeValue;
@@ -75,9 +75,9 @@ app.post('/submit', function (req, res) {
 	//	https://github.com/MadKudu/node-marketo/issues/33
 	//	marketo.list.addLeadsToList().then(function (data, res) {
 	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
-		console.log(JSON.stringify(data));
+	//	console.log(JSON.stringify(data));
 		var token = marketo._connection._tokenData.access_token
-		var now = moment();
+		var now = moment().add(1, 'days');
 		var leadId = data.result[0].id;
 		var activity = {
 			"input": [
@@ -86,10 +86,14 @@ app.post('/submit', function (req, res) {
 					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssZ")
 					, "activityTypeId": customActivity || ""
 					, "primaryAttributeValue": primaryAttributeValue || ""
+					, "uf_conversion_item_id": ""
+					, "uf_conversion_item_title": ""
+					, "uf_conversion_test": ""
+					, "uf_last_visited_item_id": ""
       			}
   			]
 		}
-		console.dir(activity);
+//		console.dir(activity);
 		request({
 			url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/activities/external.json?access_token=' + token
 			, method: "POST"
