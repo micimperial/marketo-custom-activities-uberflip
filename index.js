@@ -72,34 +72,34 @@ app.post('/submit', function (req, res) {
 	var lead = req.body.submission.fields;
 	primaryAttributeValue = req.body.submission.fields.primaryAttributeValue;
 	delete lead['primaryAttributeValue'];
-	//	https://github.com/MadKudu/node-marketo/issues/33
-	//	marketo.list.addLeadsToList().then(function (data, res) {
-	marketo.lead.createOrUpdate([lead]).then(function (data, res) {
-	//	console.log(JSON.stringify(data));
+	lead.uf_conversion_item_id = req.body.cta_id || ""
+	lead.uf_conversion_item_title = req.body.submission.url || ""
+		//	https://github.com/MadKudu/node-marketo/issues/33
+		//	marketo.list.addLeadsToList().then(function (data, res) {
+	marketo.lead.createOrUpdate([lead]).then(function createCustomActivity(data, res) {
+		//	console.log(JSON.stringify(data));
 		var token = marketo._connection._tokenData.access_token
 		var now = moment().add(1, 'days');
 		var leadId = data.result[0].id;
 		var activity = {
-			"input": [
-				{
-					"leadId": data.result[0].id || 0
-					, "activityDate": now.format("YYYY-MM-DDThh:mm:ssZ")
-					, "activityTypeId": customActivity || ""
-					, "primaryAttributeValue": primaryAttributeValue || ""
-					, "uf_conversion_item_id": req.body.cta_id || ""
-					, "uf_conversion_item_title": req.body.submission.url || ""
+				"input": [
+					{
+						"leadId": data.result[0].id || 0
+						, "activityDate": now.format("YYYY-MM-DDThh:mm:ssZ")
+						, "activityTypeId": customActivity || ""
+						, "primaryAttributeValue": primaryAttributeValue || ""
       			}
   			]
-		}
-//		console.dir(activity);
+			}
+			//		console.dir(activity);
 		request({
 			url: 'https://' + userVars[2] + '.mktorest.com/rest/v1/activities/external.json?access_token=' + token
 			, method: "POST"
 			, json: activity
 		}, function customActivityCallback(error, res, body) {
 			if (!error && res.statusCode == 200) {
-			//	console.log(body)
-			//	console.log(leadId)
+				//	console.log(body)
+				//	console.log(leadId)
 				leadJson = {
 					list: listId
 					, id: [leadId]
