@@ -100,8 +100,8 @@ app.post('/submit', function (req, res) {
 			, json: activity
 		}, function customActivityCallback(error, res, body) {
 			if (!error && res.statusCode == 200) {
-				console.log(body)
-				console.log(leadId)
+			//	console.log(body)
+			//	console.log(leadId)
 				leadJson = {
 					list: listId
 					, id: [leadId]
